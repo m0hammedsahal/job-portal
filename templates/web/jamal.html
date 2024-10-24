@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOS Animations with Tailwind CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        .animation-box {
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-wrap items-center justify-center min-h-screen space-x-6 space-y-6 p-10">
+    <!-- Fade Animations -->
+    <div data-aos="fade" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade</h1>
+        <p class="text-gray-700">This element fades on scroll.</p>
+    </div>
+
+    <div data-aos="fade-up" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Up</h1>
+        <p class="text-gray-700">This element fades up on scroll.</p>
+    </div>
+
+    <div data-aos="fade-down" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Down</h1>
+        <p class="text-gray-700">This element fades down on scroll.</p>
+    </div>
+
+    <div data-aos="fade-right" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Right</h1>
+        <p class="text-gray-700">This element fades in from the right on scroll.</p>
+    </div>
+
+    <div data-aos="fade-left" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Left</h1>
+        <p class="text-gray-700">This element fades in from the left on scroll.</p>
+    </div>
+
+    <div data-aos="fade-up-right" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Up Right</h1>
+        <p class="text-gray-700">This element fades up and to the right on scroll.</p>
+    </div>
+
+    <div data-aos="fade-up-left" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Up Left</h1>
+        <p class="text-gray-700">This element fades up and to the left on scroll.</p>
+    </div>
+
+    <div data-aos="fade-down-right" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Down Right</h1>
+        <p class="text-gray-700">This element fades down and to the right on scroll.</p>
+    </div>
+
+    <div data-aos="fade-down-left" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Fade Down Left</h1>
+        <p class="text-gray-700">This element fades down and to the left on scroll.</p>
+    </div>
+
+    <!-- Flip Animations -->
+    <div data-aos="flip-left" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Flip Left</h1>
+        <p class="text-gray-700">This element flips in from the left on scroll.</p>
+    </div>
+
+    <div data-aos="flip-right" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Flip Right</h1>
+        <p class="text-gray-700">This element flips in from the right on scroll.</p>
+    </div>
+
+    <div data-aos="flip-up" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Flip Up</h1>
+        <p class="text-gray-700">This element flips up on scroll.</p>
+    </div>
+
+    <div data-aos="flip-down" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Flip Down</h1>
+        <p class="text-gray-700">This element flips down on scroll.</p>
+    </div>
+
+    <!-- Slide Animations -->
+    <div data-aos="slide-up" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Slide Up</h1>
+        <p class="text-gray-700">This element slides up on scroll.</p>
+    </div>
+
+    <div data-aos="slide-down" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Slide Down</h1>
+        <p class="text-gray-700">This element slides down on scroll.</p>
+    </div>
+
+    <div data-aos="slide-left" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Slide Left</h1>
+        <p class="text-gray-700">This element slides in from the left on scroll.</p>
+    </div>
+
+    <div data-aos="slide-right" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Slide Right</h1>
+        <p class="text-gray-700">This element slides in from the right on scroll.</p>
+    </div>
+
+    <!-- Zoom Animations -->
+    <div data-aos="zoom-in" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom In</h1>
+        <p class="text-gray-700">This element zooms in on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-in-up" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom In Up</h1>
+        <p class="text-gray-700">This element zooms in and up on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-in-down" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom In Down</h1>
+        <p class="text-gray-700">This element zooms in and down on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-in-left" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom In Left</h1>
+        <p class="text-gray-700">This element zooms in and to the left on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-in-right" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom In Right</h1>
+        <p class="text-gray-700">This element zooms in and to the right on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-out" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom Out</h1>
+        <p class="text-gray-700">This element zooms out on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-out-up" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom Out Up</h1>
+        <p class="text-gray-700">This element zooms out and up on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-out-down" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom Out Down</h1>
+        <p class="text-gray-700">This element zooms out and down on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-out-left" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom Out Left</h1>
+        <p class="text-gray-700">This element zooms out and to the left on scroll.</p>
+    </div>
+
+    <div data-aos="zoom-out-right" class="animation-box p-6 bg-white rounded shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Zoom Out Right</h1>
+        <p class="text-gray-700">This element zooms out and to the right on scroll.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200, // Animation duration in milliseconds
+        offset: 200, // Offset (in pixels) from the original trigger point
+      });
+    </script>
+</body>
+</html>

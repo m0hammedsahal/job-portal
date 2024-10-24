@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+
+{% load static %}
+
+
+<div class="max-w-2xl mx-auto py-10 text-center">
+    <h1 class="text-3xl font-bold mb-6">Application Submitted Successfully</h1>
+    <p>Thank you for applying! We will review your application and get back to you soon.</p>
+</div>
+
+<script>
+    // Redirect to logout after a delay (e.g., 5 seconds)
+    setTimeout(function() {
+        window.location.href = "{% url 'web:job_posting_list' %}";
+    }, 3000);  // 5-second delay before logging out
+</script>
+
+{% endblock %}

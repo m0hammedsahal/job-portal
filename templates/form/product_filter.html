@@ -1,0 +1,210 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+
+<div class="container px-[10%] mt-10">
+    <h1 class="text-3xl font-bold mb-5">Product Search & Filter</h1>
+    
+    <div class="mb-4">
+        <form method="GET" action="" class="flex">
+            <input type="text" name="search" value="{{ search_query }}" placeholder="Search products..." class="flex-grow p-2 border border-gray-300 rounded-l">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r">Search</button>
+        </form>
+    </div>
+    <div class="mb-8">
+        <h3 class="text-lg font-medium mb-2">Sort by</h3>
+        <form method="get" action="" class="w-full p-2 border border-gray-300 rounded">
+            <div class="flex gap-2">
+                <a href="?{% if request.get %}{{ request.get.urlencode }}&{% endif %}sort=" class="px-4 py-2 border rounded bg-gray-200 hover:bg-gray-300 {% if sort == '' %}bg-blue-500 text-white{% endif %}">Default</a>
+                <a href="?{% if request.get %}{{ request.get.urlencode }}&{% endif %}sort=low_to_high" class="px-4 py-2 border rounded bg-gray-200 hover:bg-gray-300 {% if sort == 'low_to_high' %}bg-blue-500 text-white{% endif %}">Price: Low to High</a>
+                <a href="?{% if request.get %}{{ request.get.urlencode }}&{% endif %}sort=high_to_low" class="px-4 py-2 border rounded bg-gray-200 hover:bg-gray-300 {% if sort == 'high_to_low' %}bg-blue-500 text-white{% endif %}">Price: High to Low</a>
+                <a href="?{% if request.get %}{{ request.get.urlencode }}&{% endif %}sort=latest" class="px-4 py-2 border rounded bg-gray-200 hover:bg-gray-300 {% if sort == 'latest' %}bg-blue-500 text-white{% endif %}">Latest</a>
+            </div>
+        </form>
+    </div>
+    
+    
+    
+    <div class="grid grid-cols-4 gap-6">
+        
+        <div class="col-span-1 bg-white shadow-md p-6 rounded-lg">
+            
+            
+            <h2 class="text-xl font-semibold mb-4">Filters</h2>
+        
+            <!-- Price Range Buttons -->
+            <div class="mb-4">
+                <h3 class="text-lg font-medium mb-2">Price Range</h3>
+                <div class="flex flex-col gap-2">
+                    <a href="?{% if request.GET %}{{ request.GET.urlencode }}&{% endif %}min_price=1000&max_price=2000" class="p-2 bg-gray-200 rounded hover:bg-gray-300">1000 - 2000</a>
+                    <a href="?{% if request.GET %}{{ request.GET.urlencode }}&{% endif %}min_price=2000&max_price=3000" class="p-2 bg-gray-200 rounded hover:bg-gray-300">2000 - 30000</a>
+                </div>
+            </div>
+        
+            <form method="GET" action="" id="filterForm">
+                <div class="mb-8 ">
+                    <h3 class="text-lg font-medium mb-2">Sort by</h3>
+                    <select name="sort" class="w-full p-2 border border-gray-300 rounded" onchange="this.form.submit()">
+                        <option value="">Default</option>
+                        <option value="low_to_high" {% if sort == 'low_to_high' %}selected{% endif %}>Price: Low to High</option>
+                        <option value="high_to_low" {% if sort == 'high_to_low' %}selected{% endif %}>Price: High to Low</option>
+                        <option value="latest" {% if sort == 'latest' %}selected{% endif %}>Latest</option>
+                    </select>
+                </div>
+    
+                <p class="text-lg mb-4">Sorted by: 
+                    {% if sort == 'low_to_high' %}
+                        Price: Low to High
+                    {% elif sort == 'high_to_low' %}
+                        Price: High to Low
+                    {% elif sort == 'latest' %}
+                        Latest
+                    {% else %}
+                        Default
+                    {% endif %}
+                </p>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium mb-2">Category</h3>
+                    <select name="category" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">All Categories</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium mb-2">Size</h3>
+                    <select name="size" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">All Sizes</option>
+                        {% for size in available_sizes %}
+                            <option value="{{ size }}" {% if selected_size == size %}selected{% endif %}>{{ size }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium mb-2">Price Range</h3>
+                    <div class="flex gap-2">
+                        <input type="number" name="min_price" value="{{ min_price }}" placeholder="Min" class="w-1/2 p-2 border border-gray-300 rounded">
+                        <input type="number" name="max_price" value="{{ max_price }}" placeholder="Max" class="w-1/2 p-2 border border-gray-300 rounded">
+                    </div>
+                </div>
+        
+                <div class="mt-6">
+                    <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded">Apply Filters</button>
+                </div>
+            </form>
+        </div>
+        
+        
+        <div class="col-span-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% if products %}
+                    {% for product in products %}
+                        <div class="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-200 grid grid-rows-1">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ product.name }}</h3>
+                            <p class="text-sm text-gray-600 mb-2">Category: {{ product.category.name }}</p>
+            
+                            {% if product.category.name == "Men's clothing" %}
+                                <p class="text-sm text-gray-600 mb-2">Size: {{ product.size }}</p>
+                            {% endif %}
+            
+                            <p class="text-sm text-gray-600 mb-2">Price: ${{ product.price }}</p>
+                            <a class="block w-full" href="{% url 'web:product_detail' id=product.id %}"><button class="bg-blue-500 text-white px-4 py-2 rounded">View Details</button></a>
+            
+                            <!-- Share Button -->
+                            <button class="bg-green-500 text-white px-4 py-2 mt-3 rounded" onclick="shareProduct('{{ product.name }}', '{{ product.get_absolute_url }}')">
+                                Share Product
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-lg text-gray-600">No products found.</p>
+                {% endif %}
+            </div>
+            
+            
+
+            <div class="mt-8">
+                <div class="mt-8 flex justify-center">
+                    {% if is_paginated %}
+                        <nav class="pagination">
+                            <ul class="flex list-none gap-2 items-center pb-2">
+                                
+                                {% if page_obj.has_previous %}
+                                    <li>
+                                        <a href="?{% if request.GET %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.previous_page_number }}" class="px-3 py-1 border rounded bg-gray-200 hover:bg-gray-300">Previous</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <span class="px-3 py-1 border rounded bg-gray-200 text-gray-400">Previous</span>
+                                    </li>
+                                {% endif %}
+                                
+                                {% for page_num in page_obj.paginator.page_range %}
+                                    {% if page_num == page_obj.number %}
+                                        <li>
+                                            <span class="px-3 py-1 border rounded bg-blue-500 text-white">{{ page_num }}</span>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a href="?{% if request.GET %}{{ request.GET.urlencode }}&{% endif %}page={{ page_num }}" class="px-3 py-1 border rounded bg-gray-200 hover:bg-gray-300">{{ page_num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                
+                                <li class="px-3 py-1 border rounded bg-gray-300 text-gray-700">
+                                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                                </li>
+                
+                                {% if page_obj.has_next %}
+                                    <li>
+                                        <a href="?{% if request.GET %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.next_page_number }}" class="px-3 py-1 border rounded bg-gray-200 hover:bg-gray-300">Next</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <span class="px-3 py-1 border rounded bg-gray-200 text-gray-400">Next</span>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function shareProduct(name, url) {
+        const shareData = {
+            title: name,
+            text: 'Check out this product!',
+            url: url
+        };
+
+        if (navigator.share) {
+            // If Web Share API is supported, use it
+            navigator.share(shareData)
+                .then(() => console.log('Product shared successfully!'))
+                .catch((err) => console.error('Error sharing product:', err));
+        } else {
+            // Fallback: Copy product URL to clipboard
+            const tempInput = document.createElement('input');
+            document.body.appendChild(tempInput);
+            tempInput.value = url;
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert('Product URL copied to clipboard!');
+        }
+    }
+</script>
+
+
+
+{% endblock %}

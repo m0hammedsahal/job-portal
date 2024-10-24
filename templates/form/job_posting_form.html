@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+
+{% load static %}
+
+
+<div class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Create or Update a Job Posting</h2>
+  
+  <form method="POST" action="{% url 'web:job_posting_create' %}" class="space-y-6">
+      {% csrf_token %}
+      <div class="space-y-4">
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+            {{ form.title }}
+        </div>
+        <div class="grid grid-cols-3 items-center">
+            <div class="col-span-2 mr-4">
+                <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                {{ form.company }}
+            </div>
+            <div class="col-span-1 text-center">
+                <label for="task" class="block text-sm font-medium text-red-400 mb-1">your Company is not Listed heare</label>
+                <a href="{% url 'web:create_company' %}"><button type="button" class="text-white bg-green-400 rounded-md p-1 border-[1px] border-gray-300">Add Your company</button></a>
+            </div>
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+            {{ form.location }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Salary</label>
+            {{ form.salary }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+            {{ form.description }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Responsibilities</label>
+            {{ form.responsibilities }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Requirements</label>
+            {{ form.requirements }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Apply Link</label>
+            {{ form.apply_link }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Remote</label>
+            {{ form.is_remote }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">skills Required</label>
+            {{ form.skills_required }}
+        </div>
+        <div class="">
+            <label for="task" class="block text-sm font-medium text-gray-700 mb-1">Employment Type</label>
+            {{ form.employment_type }}
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              Submit
+          </button>
+      </div>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+<div class="container mx-auto mt-10 p-6 bg-gray-50 rounded-lg shadow-lg">
+    <!-- Profile Header -->
+    <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center space-x-4">
+            <div class="bg-blue-500 text-white rounded-full h-20 w-20 flex items-center justify-center text-2xl font-bold">
+                {{ worker_profile.first_name|slice:":1" }}{{ worker_profile.last_name|slice:":1" }}
+            </div>
+            <div>
+                <h1 class="text-3xl font-bold">{{ worker_profile.first_name }} {{ worker_profile.last_name }}</h1>
+                <p class="text-gray-600">{{ worker_profile.email }}</p>
+                <p class="text-gray-500">{{ worker_profile.phone }}</p>
+            </div>
+        </div>
+        <div>
+            <a href="{{ worker_profile.resume.url }}" class="px-6 py-2 bg-green-500 text-white rounded-lg shadow-lg hover:bg-green-600 transition-all">
+                Download Resume
+            </a>
+        </div>
+    </div>
+
+    <!-- Personal Information -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Personal Information</h2>
+            <ul class="text-gray-700 space-y-2">
+                <li><strong>First Name:</strong> {{ worker_profile.first_name }}</li>
+                <li><strong>Last Name:</strong> {{ worker_profile.last_name }}</li>
+                <li><strong>Address:</strong> {{ worker_profile.address }}</li>
+            </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Education</h2>
+            <ul class="text-gray-700 space-y-2">
+                <li><strong>Highest Education:</strong> {{ worker_profile.highest_education }}</li>
+                <li><strong>Institution:</strong> {{ worker_profile.institution_name }}</li>
+                <li><strong>Graduation Year:</strong> {{ worker_profile.graduation_year }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h2 class="text-xl font-semibold mb-4">Work Experience</h2>
+        <ul class="text-gray-700 space-y-2">
+            <li><strong>Job Title:</strong> {{ worker_profile.current_job_title|default:"N/A" }}</li>
+            <li><strong>Company:</strong> {{ worker_profile.company_name|default:"N/A" }}</li>
+            <li><strong>Years of Experience:</strong> {{ worker_profile.experience_years }} years</li>
+        </ul>
+    </div>
+
+    <!-- Skills -->
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h2 class="text-xl font-semibold mb-4">Skills</h2>
+        <div class="flex flex-wrap rounded-full px-1    ">
+            {% for skill in worker_profile.skills %}
+                <span class="bg-blue-100 text-blue-800 px-1 py-1">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Application Information -->
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h2 class="text-xl font-semibold mb-4">Application Information</h2>
+        <ul class="text-gray-700 space-y-2">
+            <li><strong>Applied for:</strong> {{ worker_profile.applied_job.title }} at {{ worker_profile.applied_job.company }}</li>
+            <li><strong>Date Applied:</strong> {{ worker_profile.applied_at|date:"F j, Y, g:i a" }}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

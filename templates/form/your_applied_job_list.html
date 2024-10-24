@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+<div class="container px-[10%] my-8">
+    <h2 class="text-2xl font-semibold mb-6">Your Applied Jobs</h2>
+    
+    <!-- Check if there are any jobs -->
+    {% if jobs %}
+        <!-- Loop through each job -->
+        {% for job in jobs %}
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-4">
+                <div class="p-4 flex justify-between items-center">
+                    <!-- Job Info -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800">{{ job.job_title }}</h3>
+                        <p class="text-gray-600">{{ job.company_name }}</p>
+                        <p class="text-gray-500 text-sm">Applied on: <span class="font-medium">{{ job.applied_at|date:"F d, Y" }}</span></p>
+                    </div>
+
+                    <!-- Job Status -->
+                    <div class="text-right">
+                        <p class="text-sm font-medium text-yellow-600 mb-2">Status: {{ job.status }}</p>
+                        <div class="flex gap-4">
+                            <a href="{% url 'web:worker_profile_detail' job.id %}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">View Details</a>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Withdraw</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-lg text-gray-600">You have not applied to any jobs yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

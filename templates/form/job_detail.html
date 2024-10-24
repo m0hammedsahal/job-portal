@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+<div class="container mx-auto mt-10 max-w-4xl p-6 bg-white shadow-md rounded-lg">
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold">{{ job.title }}</h1>
+        <span class="bg-blue-500 text-white px-3 py-1 rounded-full">{{ job.get_employment_type_display }}</span>
+    </div>
+
+    <!-- Company Information -->
+    <a href="{% url 'web:company_detail' job.id %}">
+        <div class="mb-2">
+            <h2 class="text-2xl font-semibold">{{ job.company.name }}</h2>
+            <p class="text-sm text-gray-600">{{ job.location }} | 
+                <span class="font-medium">{{ job.is_remote|yesno:"Remote,On-site" }}</span>
+            </p>
+            <p class="text-sm text-gray-600">Salary: {{ job.salary }}</p>
+        </div>
+    </a>
+    <a href="{{ job.apply_link }}" class="text-blue-500 hover:underline mt-2 block mb-6">Apply Now</a>
+    <!-- Job Description -->
+    <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-3">Job Description</h3>
+        <p class="text-gray-700">{{ job.description }}</p>
+    </div>
+
+    <!-- Responsibilities -->
+    <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-3">Responsibilities</h3>
+        <ul class="list-disc pl-6 text-gray-700">
+            {% for responsibility in job.responsibilities.splitlines %}
+                <li>{{ responsibility }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Requirements -->
+    <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-3">Requirements</h3>
+        <ul class="list-disc pl-6 text-gray-700">
+            {% for requirement in job.requirements.splitlines %}
+                <li>{{ requirement }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Skills Required -->
+    <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-3">Skills Required</h3>
+        <p class="text-gray-700">
+            {{ job.skills_required.all|join:", " }}
+        </p>
+    </div>
+
+    <!-- Posted and Updated Information -->
+    <div class="text-sm text-gray-600 mt-6">
+        <p>Posted on: {{ job.posted_at|date:"F j, Y" }}</p>
+        <p>Last updated on: {{ job.updated_at|date:"F j, Y" }}</p>
+    </div>
+</div>
+{% endblock %}

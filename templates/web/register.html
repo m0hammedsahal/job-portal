@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+
+{% load static %}
+
+<section id="register" class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
+        <div class="logo text-center mb-6">
+            <img src="{% static '/images/worksphere-logos-idMgDPwl8R.png' %}" class="w-[100px] mx-auto" alt="Logo">
+        </div>
+        <h1 class="text-2xl font-semibold text-gray-800 text-center mb-4">Create Account</h1>
+        <form action="" method="post" class="space-y-6">
+            {% csrf_token %}
+            <div class="form-control">
+                <input type="text" name="username" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter username" required>
+            </div>
+            <div class="form-control">
+                <input type="text" name="first_name" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter first name" required>
+            </div>
+            <div class="form-control">
+                <input type="text" name="last_name" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter last name" required>
+            </div>
+            <div class="form-control">
+                <input type="password" name="password" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter password" required>
+            </div>
+            <p class="text-center text-gray-600">
+                Already have an account? 
+                <a href="{% url 'web:login' %}" class="text-blue-600 hover:underline">Login</a>
+            </p>
+            <div class="btn">
+                <input type="submit" value="Register" class="w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 cursor-pointer">
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

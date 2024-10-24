@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% block container %}
+<div class="container mx-[5%] mt-10">
+    <h1 class="text-3xl font-bold mb-5">{{ job_creator.user }} - Jobs</h1>
+    <p class="text-lg mb-4">name: {{ job_creator }}</p>
+
+    <h2 class="text-2xl font-semibold mb-5">List Jobs</h2>
+    
+    {% if jobs %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for job in jobs %}
+            <div class="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-200">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ job.title }}</h3>
+                <p class="text-sm text-gray-600 mb-2">Company: <span class="font-medium">{{ job.company }}</span></p>
+                <p class="text-sm text-gray-600 mb-2">Location: <span class="font-medium">{{ job.location }}</span></p>
+                <p class="text-sm text-gray-600 mb-2">Employment Type: <span class="font-medium">{{ job.get_employment_type_display }}</span></p>
+                <p class="text-sm text-gray-600 mb-2">Remote: <span class="font-medium">{% if job.is_remote %}Yes{% else %}No{% endif %}</span></p>
+                <p class="text-sm text-gray-600 mb-4">Skills Required: <span class="font-medium">{{ job.skills_required.all|join:", " }}</span></p>
+                <div class="flex justify-between">
+                    <a href="{% url 'web:apply_for_job' job.id %}" class="text-blue-600 hover:underline font-semibold">Edit</a>
+                    <a href="{{ job.apply_link }}" class="text-yellow-600 hover:underline font-semibold">Delete</a>
+                    <a href="{% url 'web:worker_profile_list' job.id %}" class="text-red-600 hover:underline font-semibold">View Worker Profiles</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No Jobs profiles available for You.</p>
+    {% endif %}
+</div>
+{% endblock %}

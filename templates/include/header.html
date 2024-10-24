@@ -1,0 +1,43 @@
+
+{% load static %}
+
+<header class="h-[90px] border-b-[2px]">
+    <div class="container mx-auto flex justify-between px-[5%] py-4 items-center">
+      <div class="flex items-center">
+        <img src="{% static '/images/worksphere-logos-idMgDPwl8R.png' %}" class="w-[200px]" alt="">
+        <!-- <h1 class="text-[30px] font-[700] hover:text-gray-700">WORKSPHERE</h1> -->
+      </div>
+      <nav class="hidden lg:block items-center">
+        <ul class="flex space-x-4">
+          <li><a href="#" class="text-[18px] hover:text-gray-700 font-[500] mr-[20px]">Find work</a></li>
+          <li><a href="{% url 'web:your_job_list' %}" class="text-[18px] hover:text-gray-700 font-[500] mr-[20px]">Your Posted Jobs</a></li>
+          <li><a href="{% url 'web:applied_job_list' %}" class="text-[18px] hover:text-gray-700 font-[500] mr-[20px]">You Applied Jobs</a></li>
+          <li><a href="#" class="text-[18px] hover:text-gray-700 font-[500] mr-[20px]">Post a free job</a></li>
+        </ul>
+      </nav>
+
+      {% if user.is_authenticated %}
+      <a href="{% url 'web:logout' %}"><button class="items-center text-[17px] lg:flex hidden text-white bg-black hover:bg-gray-700 rounded-[30px] px-[15px] pt-[5px] pb-[10px]">Logout</button></a>
+      {% else %}
+      <a href="{% url 'web:login' %}"><button class="items-center text-[17px] lg:flex hidden text-white bg-black hover:bg-gray-700 rounded-[30px] px-[15px] pt-[5px] pb-[10px]">Login</button></a>
+      {% endif %}
+
+      <div class="lg:hidden items-center">
+        <button id="mobile-menu-toggle" class="focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="lg:hidden hidden bg-[#615d5d]">
+      <ul class="p-4">
+        <li><a href="#" class="block py-2 px-4 text-sm text-gray-300 hover:text-white">Find work</a></li>
+        <li><a href="{% url 'web:your_job_list' %}" class="block py-2 px-4 text-sm text-gray-300 hover:text-white">Your Jobs</a></li>
+        <li><a href="#" class="block py-2 px-4 text-sm text-gray-300 hover:text-white">Upskill</a></li>
+        <li><a href="#" class="block py-2 px-4 text-sm text-gray-300 hover:text-white">Post a free job</a></li>
+      </ul>
+    </div>
+  </header>
+
+  

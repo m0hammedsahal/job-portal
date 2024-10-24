@@ -1,0 +1,329 @@
+
+{% extends 'base/base.html' %}
+
+{% block container %}
+
+{% load static %}
+
+{% include 'include/header.html' %}
+
+
+
+
+    <section id="home">
+        
+        <section class="spotlight text-center pb-[150px]">
+            <div class="shakatha">
+                <h5 class="dark text-[20px] font-[700] lg:block hidden" for="">Dark mode</h5>show more
+                <label class="switch">
+                    <input type="checkbox" onclick="myFunction()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <ul class="mobile-menu hidden bg-blue-500 border-[2px]">
+                <h2 class="text-[30px] text-white font-[600] mb-[20px]">MENU</h2>
+                <li class="text-[20px] hover:text-gray-700 font-[500] mb-[10px]">Find work</li>
+                <li class="text-[20px] hover:text-gray-700 font-[500] mb-[10px]">Applications</li>
+                <li class="text-[20px] hover:text-gray-700 font-[500] mb-[10px]">Upskill</li>
+                <li class="text-[20px] hover:text-gray-700 font-[500] mb-[10px]">Post a free job</li>
+            </ul>
+            <h2 class="text-[35px] font-[600] mb-[15px] pt-[150px]">Jobs for Unemployed Youth
+                No Experience? No Problem </h2>
+            <p class="text-[25px] mb-[25px] font-[600] text-gray-500">Empowering Youth through No Experience Job Opportunities</p>
+            <a href="{% url 'web:job_posting_list' %}"><button class="raibg text-white bg-black hover:bg-gray-700 rounded-lg px-[15px] py-[5px]">Find A Job</button></a>
+            <!-- <button class="text-white bg-black hover:bg-gray-700 rounded-lg px-[15px] py-[5px]" style="margin: auto;" onclick="myFunction()">Dark Mode</button>
+            <button id="toggleButton" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none">
+                Dark Mode On
+            </button> -->
+        </section>
+    </section>
+    <section class="futured px-[5%] lg:block hidden">
+        <h2 class="text-[35px] font-[600] mb-[15px]">Featured Job</h2>
+        <div class="flex">
+            <!-- left -->
+            <div data-aos="zoom-in-right" data-aos-delay="500" class="left w-[292px] h-[550px] mt-[20px] border-[1px] border-[#00000082] p-[20px] rounded-[20px] ">
+                <div class="w-full text-center">
+                    <h2 class="text-[26px] font-[600] pb-[20px]">Filter</h2>
+                </div>
+                <h6 class="text-[22px] font-[300] mb-[20px]">Location</h6>
+                <div class="flex justify-between items-center border-[1px] border-[#00000082] p-[10px] rounded-[40px] mb-[30px]">
+                    <i class='bx bxs-location-plus text-[25px]'></i>
+                    <p class="text-[21px]">Cape Town</p>
+                    <i class='bx bx-chevron-down text-[29px]'></i>
+                </div>
+                <h6 class="text-[22px] font-[300] mb-[20px] ">Employment type</h6>
+                <ul class="ml-[10px] flex mb-[20px]">
+                    <input type="checkbox" class="mr-[10px] w-[17px]">
+                    <li class="text-[22px] font-[500]">Full-time</li>
+                </ul>
+                <ul class="ml-[10px] flex mb-[20px]">
+                    <input type="checkbox" class="mr-[10px] w-[17px]">
+                    <li class="text-[22px] font-[500]">Remote</li>
+                </ul>
+                <h6 class="text-[22px] font-[300] mb-[20px]">Special Skills</h6>
+                <ul class="ml-[10px] flex mb-[20px]">
+                    <input type="checkbox" class="mr-[10px] w-[17px]">
+                    <li class="text-[22px] font-[500]">React </li>
+                </ul>
+                <ul class="ml-[10px] flex">
+                    <input type="checkbox" class="mr-[10px] w-[17px]">
+                    <li class="text-[22px] font-[500]">Angular</li>
+                </ul>
+            </div>
+            <!-- center -->
+            <div class="center mt-[30px] w-[632px] p-[20px]">
+                <div data-aos="flip-right" data-aos-delay="200" class="tran shadow-lg flex justify-between items-center w- border-[1px] hover:border-[3px] border-[#5F909F] p-[15px] rounded-[20px] mb-[20px]">
+                    <div class="flex items-center">
+                        <img src=".{% static '/images/Frame 1.png' %}" alt="" class="mr-[25px] w-[62px]">
+                        <div class="c">
+                            <h2 class="text-[22px] font-[400] mb-[px] text-gray-500">Junior Web Developer</h2>
+                            <a href="#" class="underline text-[22px] font-[400] text-[#113E4D]">InnovateIQ</a>
+                        </div>
+                    </div>
+                    <div class="r">
+                        <div class="flex mb-[px]">
+                            <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                            <p class="text-gray-500 text-[22px]">Location</p>
+                        </div> 
+                        <h5 class="text-[22px] font-[400]">Cape Town</h5>
+                    </div>
+                </div>
+                <div data-aos="flip-up" data-aos-delay="400" class="bar shadow-lg flex justify-between items-center w- border-[1px] border-[#5F909F] p-[15px] rounded-[20px] mb-[20px]">
+                    <div class="flex items-center">
+                        <img src=".{% static '/images/Frame 2.png' %}" alt="" class="mr-[25px] w-[62px]">
+                        <div class="c">
+                            <h2 class="text-[22px] font-[400] mb-[px] text-gray-500">Virtual Assistant</h2>
+                            <a href="#" class="underline text-[22px] font-[400] text-[#113E4D]">InnovateIQ</a>
+                        </div>
+                    </div>
+                    <div class="r">
+                        <div class="flex mb-[px]">
+                            <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                            <p class="text-gray-500 text-[22px]">Location</p>
+                        </div> 
+                        <h5 class="text-[22px] font-[400]">Remote</h5>
+                    </div>
+                </div>
+                <div data-aos="flip-left" data-aos-delay="600" class="shadow-lg flex justify-between items-center w- border-[1px] hover:border-[3px] border-[#5F909F] p-[15px] rounded-[20px] mb-[20px]">
+                    <div class="flex items-center">
+                        <img src=".{% static '/images/Frame 3.png' %}" alt="" class="mr-[25px] w-[62px]">
+                        <div class="c">
+                            <h2 class="text-[22px] font-[400] mb-[px] text-gray-500">Data Scientist</h2>
+                            <a href="#" class="underline text-[22px] font-[400] text-[#113E4D]">InnovateIQ</a>
+                        </div>
+                    </div>
+                    <div class="r">
+                        <div class="flex mb-[px]">
+                            <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                            <p class="text-gray-500 text-[22px]">Location</p>
+                        </div> 
+                        <h5 class="text-[22px] font-[400]">Pretoria</h5>
+                    </div>
+                </div>
+                <div data-aos="flip-down" data-aos-delay="800" class="shadow-lg flex justify-between items-center w- border-[1px] hover:border-[3px] border-[#5F909F] p-[15px] rounded-[20px] ">
+                    <div class="flex items-center">
+                        <img src=".{% static '/images/Frame 4.png' %}" alt="" class="mr-[25px] w-[62px]">
+                        <div class="c">
+                            <h2 class="text-[22px] font-[400] mb-[px] text-gray-500">Junior Accountant</h2>
+                            <a href="#" class="underline text-[22px] font-[400] text-[#113E4D]">InnovateIQ</a>
+                        </div>
+                    </div>
+                    <div class="r">u6tqxdefcutfecqxrut egurf fbviyrir rgiry vr 7  dfbjhvjhrruhj mjff rhk rihuifkrfkiujivo8figunvkboluihlvnv9hhl++++
+                        <div class="flex mb-[px]">
+                            <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                            <p class="text-gray-500 text-[22px]">Location</p>
+                        </div> 
+                        <h5 class="text-[22px] font-[400]">Cape Town</h5>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="{% url 'web:job_posting_list' %}"><button class="bg-blue-500 hover:bg-blue-700 text-[17px] font-[600] text-white py-4 px-9 rounded mt-[20px]">Show more jobs</button></a>
+                </div>
+            </div>
+            <!-- right -->
+            <div data-aos="zoom-in-left" data-aos-delay="800" class="left w-[452px] h-[810px] border-[1px] border-[#00000082] p-[30px] rounded-[20px] ">
+                <h2 class="text-[25px] font-[600] ">Junior Web Developer</h2>
+                <a href="#" class="underline text-[18px]">InnovateIQ</a>
+                <div class="flex mb-[10px] mt-[10px]">
+                    <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[18px]">Cape Town, Western Cape</p>
+                </div>
+                <div class="flex mb-[10px]">
+                    <i class='bx bx-money-withdraw text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[18px]">R12,000 a month</p>
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded mt-[10px] mb-[20px]">Apply now</button>
+                <h3 class="text-[18px] font-[600] mb-[7px]">Job Description</h3>
+                <p class="text-[15] font-[400] mb-[20px]">The Junior Web Developer is responsible for supporting the development, maintenance, and implementation of websites and web-based applications.</p>
+                <h3 class="text-[18px] font-[600] mb-[7px]">Job Description</h3>
+                <ul class="list-disc pl-5 space-y-2 mb-[20px]">
+                    <li>Write clean, well-documented, and efficient code</li>
+                    <li>Debug and troubleshoot web-related issues</li>
+                </ul>
+                <h3 class="text-[18px] font-[600] mb-[7px]">Requirements</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Bachelor's degree in computer science or related field or equivalent experience</li>
+                    <li>Strong knowledge of HTML, CSS, JavaScript, and web development frameworks such as Angular, React, or Vue.js</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="find px-[5%]">
+        <h2 class="text-[35px] font-[600] mb-[15px]">Featured Job</h2>
+        <p class="text-[25px] mb-[25px] font-[600] text-gray-500">Apply Filters</p>
+        
+        <ul class="flex flex-wrap">
+            <li data-aos="fade-right" data-aos-delay="100" class="sm:mr-0 md:mr-0 md:mb-0 mb-[20px] w-[85%] sm:w-[47%] md:w-[21%] m-auto rounded-[50px] bg-blue-500 hover:bg-blue-700 text-white text-[30px] px-[10px] py-[7px] text-center"><a href="#">Full-time</a></li>
+            <li data-aos="fade-right" data-aos-delay="200" class="w-[85%] sm:mr-0 sm:w-[47%] md:w-[21%] m-auto md:mb-0 mb-[20px] rounded-[50px] bg-blue-500 hover:bg-blue-700 text-white text-[30px] px-[10px] py-[7px] text-center"><a href="#">Remote-</a></li>
+            <li data-aos="fade-right" data-aos-delay="400" class="sm:mr-0 md:mr-0 w-[85%] sm:w-[47%] sm:mb-0 mb-[20px] md:w-[21%] m-auto rounded-[50px] bg-blue-500 hover:bg-blue-700 text-white text-[30px] px-[10px] py-[7px] text-center"><a href="#">ui/ux</a></li>
+            <li data-aos="fade-right" data-aos-delay="600" class="w-[85%] sm:mr-0 sm:w-[47%] md:w-[21%] sm:mb-0 mb-[20px] m-auto rounded-[50px] bg-blue-500 hover:bg-blue-700 text-white text-[30px] px-[10px] py-[7px] text-center"><a href="#">React</a></li>
+        </ul>
+        <div class="flex mt-[20px]">
+            <i class='bx bx-window-close text-gray-500 text-[30px] mt-[7px] mr-[10px]'></i>
+            <p class="text-gray-500 text-[25px] font-[600]">Clear filters</p>
+        </div>
+        <div class="flex flex-wrap mt-[20px]">
+            <div data-aos="slide-left" data-aos-delay="300" class="card w-[98%] lg:w-[32%] md:w-[45%] m-auto mr-[20px] border-2 border-gray-500 rounded-[30px] p-[20px] mb-[20px]">
+                <h2 class="text-[30px] font-[600]">Junior Web Developer</h2>
+                <a href="#" class="underline text-[20px]">InnovateIQ</a>
+                <div class="flex">
+                    <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[22px]">Cape Town, Western Cape</p>
+                </div>
+                <div class="flex">
+                    <i class='bx bx-money-withdraw text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[22px]">R12,000 a month</p>
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded mt-[10px]">Apply now</button>
+            </div>
+            <div data-aos="slide-up" data-aos-delay="400" class="card w-[98%] lg:w-[32%] md:w-[45%] m-auto mr-[20px] border-2 border-gray-500 rounded-[30px] p-[20px] mb-[20px]">
+                <h2 class="text-[30px] font-[600]">Junior Web Developer</h2>
+                <a href="#" class="underline text-[20px]">InnovateIQ</a>
+                <div class="flex">
+                    <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[22px]">Cape Town, Western Cape</p>
+                </div>
+                <div class="flex">
+                    <i class='bx bx-money-withdraw text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[22px]">R12,000 a month</p>
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded mt-[10px]">Apply now</button>
+
+            </div>
+            <div data-aos="slide-right" data-aos-delay="800" class="card w-[98%] lg:w-[32%] md:w-[45%] m-auto mr-[] border-2 border-gray-500 rounded-[30px] p-[20px] mb-[20px]">
+                <h2 class="text-[30px] font-[600]">Junior Web Developer</h2>
+                <a href="#" class="underline text-[20px]">InnovateIQ</a>
+                <div class="flex">
+                    <i class='bx bx-current-location text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[22px]">Cape Town, Western Cape</p>
+                </div>
+                <div class="flex">
+                    <i class='bx bx-money-withdraw text-gray-500 text-[22px] mt-[5px] mr-[10px]'></i>
+                    <p class="text-gray-500 text-[22px]">R12,000 a month</p>
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded mt-[10px]">Apply now</button>
+
+            </div>
+        </div> 
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for job in job_list %}
+            <div class="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-200">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ job.title }}</h3>
+                <p class="text-sm text-gray-600 mb-2">Company: <span class="font-medium">{{ job.company }}</span></p>
+                <p class="text-sm text-gray-600 mb-2">Location: <span class="font-medium">{{ job.location }}</span></p>
+                <p class="text-sm text-gray-600 mb-2">Employment Type: <span class="font-medium">{{ job.get_employment_type_display }}</span></p>
+                <p class="text-sm text-gray-600 mb-2">Remote: <span class="font-medium">{% if job.is_remote %}Yes{% else %}No{% endif %}</span></p>
+                <p class="text-sm text-gray-600 mb-4">Skills Required: <span class="font-medium">{{ job.skills_required.all|join:", " }}</span></p>
+                <a href="{{ job.apply_link }}" class="text-blue-600 hover:underline font-semibold">Apply Now</a>
+            </div>
+            {% empty %}
+            <div class="col-span-3">
+                <p class="text-gray-600 text-center">No jobs found.</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded mt-[10px] inline-block m-auto text-[20px] mb-[20px]">Show more jobs</button>
+
+        </div>
+    </section>
+    <div class="spotlight pt-[100px] px-[30px] flex flex-wrap">
+        <div data-aos="zoom-out" data-aos-delay="800" class="card w-[98%] md:w-[47%] m-auto mr-[20px] border-2 border-gray-500 rounded-[30px] p-[20px] mb-[20px] text-center">
+            <h2 class="text-[30px] font-[700] mb-[20px]">Post a Featured Job</h2>
+            <p class="text-gray-500 text-[17px] mb-[20px]">Posting a featured job increases visibility and attracts top talent. It stands out on the job board and often receives additional promotion through social media and email, boosting the chances of finding the right candidate.</p>
+            <a href="{% url 'web:job_posting_create' %}"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded mt-[10px] text-[20px]">Post a featured job</button></a>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="400" class="card w-[98%] md:w-[47%] m-auto border-2 border-gray-500 rounded-[30px] p-[20px] mb-[20px] bg-blue-500 text-center">
+            <h2 class="text-[30px] text-white font-[700] mb-[20px]">Post a Featured Job</h2>
+            <p class="text-white text-[17px] mb-[20px]">Posting a featured job increases visibility and attracts top talent. It stands out on the job board and often receives additional promotion through social media and email, boosting the chances of finding the right candidate.</p>
+            <a href="{% url 'web:job_posting_create' %}"><button class="bg-white hover:bg-yellow-50 text-blue-500 font-bold py-4 px-8 rounded mt-[10px] text-[20px]">Post a featured job</button></a>
+        </div>
+    </div>
+    <div class="border-b-2 border-t-2 mb-[20px] border-gray-500 text-center px-[30px]">
+        <h1 class="text-[30px] text-blue-500 font-[700] mb-[20px] mt-[20px]">YouthGigs</h1>
+        <p class="text-gray-500 text-[17px]">Join our newsletter and receive a weekly update of the top job openings directly in your inbox</p>
+        <form action="" class="relative mb-[20px]">
+            <input type="text" placeholder="Enter your emil" class="border-2 mb-[20px] mt-[20px] border-gray-500 rounded-[50px] pl-[20px] py-[10px] w-[90%]">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-[50px] absolute right-[23px] md:right-[50px] lg:right-[65px] top-[24px]">Subsribe</button>
+        </form>
+        <form action="" class="mb-[20px] mt/-[20px] border-gray-500 border-2 flex justify-end rounded-[50px] py-[px] m-auto h-[50px] w-[90%] items-center">
+            <input type="text" placeholder="Enter your emil" class="outline-none  rounded-[50px] pl-[20px] w-[100%] h-[100%]">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-[50px] mr-[2px]">Subsribe</button>
+        </form>
+    </div>
+    <footer>
+        <section class="flex flex-wrap px-[30px]">
+            <div class="navi w-[92%] md:w-[32%] text-center m-auto">
+                <h2 class="text-[40px] text-blue-500 font-[700] mb-[50px]">Navigation</h2>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Find work</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Applications</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Upskill</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Post a free job</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Post a featured job</h3>
+            </div>
+            <div class="navi w-[92%] md:w-[32%] text-center m-auto">
+                <h2 class="text-[40px] text-blue-500 font-[700] mb-[50px]">Industry</h2>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Technology</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Marketing</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Finance</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Healthcare</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Education</h3>
+            </div>
+            <div class="navi w-[92%] md:w-[32%] text-center m-auto">
+                <h2 class="text-[40px] text-blue-500 font-[700] mb-[50px]">Location</h2>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Cape Town</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Port Elizabeth </h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Joburg</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">Durban</h3>
+                <h3 class="text-[30px] font-[600] mb-[20px]">International</h3>
+            </div>
+        </section>
+    </footer>
+    <section>
+        <h1 class="rai text-6xl font-extrabold">stylo</h1>
+    </section>
+
+    
+
+
+
+    
+
+<style>
+
+
+</style>
+<script>
+
+</script>
+<script>
+    AOS.init();
+</script>
+<style>
+
+</style>
+<script src="/index.js"></script>
+ 
+
+
+{% endblock %}
