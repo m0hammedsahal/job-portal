@@ -1,29 +1,25 @@
-# 🌟 Job Portal 🚀
+# 🚀 Job Portal
 
 &#x20;
 
-## 🌍 Live Demo
+🔗 **[Live Demo](https\://m0hammedsahal.github.io/job-portal/)**
 
-🔗 **https\://m0hammedsahal.github.io/job-portal/**
-
-## 🎯 About
-
-A **Django-based Job Portal** connecting **job seekers** and **employers** with a modern **Tailwind CSS** UI. Fast, responsive, and feature-packed! 🎨✨
+A modern **Django Job Portal** for **job seekers** & **employers**, built with **Tailwind CSS**. 🎨✨
 
 ## 🚀 Features
 
-- **For Job Seekers:** Register, apply for jobs, save listings, and get alerts. 🔍
-- **For Employers:** Post jobs, manage applicants, and access premium features. 💼
-- **Admin Panel:** Manage users, job listings, and analytics. 📊
+✅ **Job Seekers:** Apply, save jobs & get alerts. 🔍\
+✅ **Employers:** Post jobs & manage applicants. 💼\
+✅ **Admin:** Manage users, jobs & analytics. 📊
 
 ## 🏗️ Tech Stack
 
-- 🖥 **Backend:** Django, Django REST Framework
-- 🎨 **Frontend:** Tailwind CSS, JavaScript (or React)
-- 🗄 **Database:** PostgreSQL / MySQL
-- 🔐 **Auth:** Django Auth with AJAX login
+🖥 **Backend:** Django, DRF\
+🎨 **Frontend:** Tailwind CSS, JS/React\
+🗄 **Database:** PostgreSQL / MySQL\
+🔐 **Auth:** Django Auth + AJAX
 
-## 📦 Installation
+## ⚡ Quick Start
 
 ```bash
 git clone https://github.com/yourusername/job-portal.git
@@ -33,15 +29,6 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## 🤝 Contribute
 
-Fork, open issues, and submit PRs! 🚀
-
-## 📜 License
-
-**MIT License**
-
----
-
-### Made with ❤️ by Mhd Sahal
+❤️ By Mhd Sahal
 
